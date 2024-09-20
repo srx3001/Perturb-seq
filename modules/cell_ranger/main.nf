@@ -12,8 +12,8 @@ process run_cellranger_multi {
 
     output:
         path "${analysis_id}/outs/per_sample_outs/${analysis_id}/count/sample_filtered_feature_bc_matrix", emit: matrix
-        path "${analysis_id}/outs/per_sample_outs/${analysis_id}/count/sample_filtered_feature_bc_matrix/metrics.csv"
-        path "${analysis_id}/outs/per_sample_outs/${analysis_id}/count/sample_filtered_feature_bc_matrix/web_summary.html "
+        path "${analysis_id}/outs/per_sample_outs/${analysis_id}/metrics.csv"
+        path "${analysis_id}/outs/per_sample_outs/${analysis_id}/web_summary.html"
 
     script:
     """
