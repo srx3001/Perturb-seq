@@ -12,9 +12,9 @@ process run_cellranger_multi {
 
     output:
         path "${analysis_id}/outs/per_sample_outs/${analysis_id}/count/sample_filtered_feature_bc_matrix", emit: matrix
-        path "${analysis_id}/outs/per_sample_outs/${analysis_id}/metrics.csv"
+        path "${analysis_id}/outs/per_sample_outs/${analysis_id}/metrics_summary.csv"
         path "${analysis_id}/outs/per_sample_outs/${analysis_id}/web_summary.html"
-
+		path "${analysis_id}/outs/multi/count/raw_cloupe.cloupe"
     script:
     """
     /cellranger-8.0.1/cellranger multi --id=${analysis_id} --csv=data/${csv_file_name}

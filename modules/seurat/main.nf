@@ -6,7 +6,7 @@ process run_seurat {
 	publishDir 'results', mode: 'copy'
     input:
         path data_dir
-	val seurat_results
+		val seurat_results
 
     output:
         path "${seurat_results}"

@@ -18,11 +18,9 @@ workflow {
     ch_csv = Channel.value(params.csv_file_name)
 	ch_rundir =  Channel.fromPath(params.rundir)
 	ch_ref =  Channel.fromPath(params.reference)
-    ch_seurat_out_dir = Channel.value(params.seurat_results)
-	
     cell_ranger_outs = run_cellranger_multi(ch_id, ch_csv, ch_rundir, ch_ref)
 	matrix_output = cell_ranger_outs.matrix
-	run_seurat(matrix_output, ch_seurat_out_dir)
+	run_seurat(matrix_output, ch_id)
                
 }
 

@@ -8,8 +8,10 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zlib1g-dev \
     libhdf5-dev \
+	python3 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install R packages
 RUN R -e "install.packages('remotes')"
-RUN R -e "install.packages(c('argparse', 'dplyr', 'ggplot2', 'seurat'))"
+RUN R -e "install.packages(c('argparse', 'dplyr', 'ggplot2'))"
+RUN R -e "install.packages(c('Seurat'))"

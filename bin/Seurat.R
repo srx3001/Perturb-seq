@@ -1,5 +1,3 @@
-#!/usr/bin/env Rscript
-
 library(Seurat)
 library(Matrix)
 library(ggplot2)
@@ -73,7 +71,7 @@ print(head(de_markers_all))
 # Step 11: Visualize the Top Differentially Expressed Genes
 
 top_genes <- de_markers_all %>% group_by(cluster) %>% top_n(n = 5, wt = avg_log2FC)
-write.table(top_genes, paste0(args$output_dir, "/top_genes.txt"), sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(top_genes, paste0(args$output_dir, "/top_genes.tsv"), sep = "\t", row.names = FALSE, quote = FALSE)
 de_markers_all$significant <- ifelse(de_markers_all$p_val < 0.05 & abs(de_markers_all$avg_log2FC) > 1, "Significant", "Not Significant")
 
 
@@ -100,7 +98,7 @@ de_markers_all_guide <- FindAllMarkers(seurat_obj_filtered)
 
 
 top_genes_guide <- de_markers_all_guide %>% group_by(cluster) %>% top_n(n = 5, wt = avg_log2FC)
-write.table(top_genes_guide, paste0(args$output_dir, "/top_genes_guide.txt"), sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(top_genes_guide, paste0(args$output_dir, "/top_genes_guide.tsv"), sep = "\t", row.names = FALSE, quote = FALSE)
 
 de_markers_all_guide$significant <- ifelse(de_markers_all_guide$p_val < 0.05 & abs(de_markers_all_guide$avg_log2FC) > 1, "Significant", "Not Significant")
 
